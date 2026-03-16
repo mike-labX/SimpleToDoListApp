@@ -29,7 +29,7 @@ namespace SimpleToDoListApp.Controllers
             {
                 item.IsDone = !item.IsDone;
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); 
         }
     }
 }
