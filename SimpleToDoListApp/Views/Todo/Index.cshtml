@@ -1,0 +1,25 @@
+﻿@model List<SimpleToDoListApp.Models.TodoItem>
+
+@{
+    ViewData["title"] = "ToDo List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Add" method="post">
+    <input type="text" name="title" placeholder="New Task..." required/>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <form asp-action="Toggle" method="post" style="display:inline">
+                <input type="hidden" name="id" value="@item.Id"/>
+                <button type="submit">@((item.IsDone ? "Yes" : "No"))</button>
+            </form>
+            @item.Title
+        </li>
+    }
+</ul>
