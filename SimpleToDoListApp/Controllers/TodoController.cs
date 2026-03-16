@@ -31,5 +31,16 @@ namespace SimpleToDoListApp.Controllers
             }
             return RedirectToAction("Index"); 
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var item = todos.FirstOrDefault(x => x.Id == id);
+            if (item != null)
+            {
+                todos.Remove(item);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
